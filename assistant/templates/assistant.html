@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Voice Assistant</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=EB+Garamond:wght@400;700&display=swap" rel="stylesheet"/>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+  <link rel="stylesheet" href="/static/css/assistant.css" />
+</head>
+<body>
+
+  <!-- 🌀 Preloader -->
+  <div id="preloader" role="dialog" aria-live="polite">
+    <div id="welcome-message">
+      <h1>Voice AI booting up</h1>
+      <p>your smart assistant is here</p>
+    </div>
+  </div>
+
+  <!-- 🧭 Top Bar -->
+  <div id="top-bar" role="navigation">
+    <a href="/" id="home-button" title="Go to Home">Home</a>
+     
+    <!-- 🌗 Theme Toggle -->
+    <label class="icon-toggle" aria-label="Toggle Theme">
+      <input type="checkbox" id="theme-toggle" onchange="toggleTheme()" />
+      <span class="icon-slider">
+        <span class="icon">🌞</span>
+        <span class="icon">🌙</span>
+        <span class="thumb"></span>
+      </span>
+    </label>
+  </div>
+
+  <!-- 💬 Main Assistant Interface -->
+  <main class="container" id="main-content" style="display: none;" role="main">
+    <h1>Voice Assistant</h1>
+
+    <section class="assistant-interface">
+      <button id="activateButton" aria-label="Activate Microphone">Start Listening</button>
+      
+      <div id="status" class="status-box" role="status" aria-live="polite">Click the button to start</div>
+      <div id="transcription" class="transcription-box" aria-label="Transcription Output"></div>
+      <div id="command-output" class="output-box" aria-label="Command Output"></div>
+
+      <div id="history-panel" class="history-panel">
+        <h3>Command History</h3>
+        <ul id="history-list" role="list"></ul>
+        <button id="clear-history-btn">Clear History</button>
+      </div>
+    </section>
+
+    <!-- ℹ️ Info Icon -->
+<button class="info-icon" id="infoIcon" aria-label="Show Commands" title="Show Commands">&#8505;</button>
+
+<!-- 📜 Commands List -->
+<aside class="commands-list" id="commandsList" aria-labelledby="commands-heading">
+  <h2 id="commands-heading">Available Commands:</h2>
+  <ul>
+    <li>"What's the time?"</li>
+    <li>"What's the date?"</li>
+    <li>"Open Google"</li>
+    <li>"Open YouTube"</li>
+    <li>"Wikipedia [topic]"</li>
+    <li>"Tell me a joke"</li>
+    <li>"Shutdown"</li>
+    <li>"Restart"</li>
+    <li>"Open Facebook"</li>
+    <li>"Open Twitter"</li>
+    <li>"Open Instagram"</li>
+    <li>"Open new tab"</li>
+    <li>"Battery status"</li>
+    <li>"Flip a coin"</li>
+    <li>"Search for [query]"</li>
+    <li>"Spell [word]"</li>
+    <li>"Tell me a fact"</li>
+  </ul>
+</aside>
+  </main>
+
+  <!-- 🚀 Script -->
+  <script>
+    document.getElementById('infoIcon').addEventListener('click', function () {
+      const panel = document.getElementById('commandsList');
+      panel.classList.toggle('visible');
+    });
+  </script>
+    <script src="/static/js/assistant.js"></script>
+    <script src="/main/script.js"></script>
+</body>
+</html>
+

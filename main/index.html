@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Voice Command App</title>
+    <link rel="stylesheet" href="/main/style.css">
+</head>
+<body>
+    <div id="preloader">
+        <div id="welcome-message">
+            <h1>Welcome to Voice Command   </h1>
+            <p>Initializing voice interface</p>
+        </div>
+    </div>
+
+    <div id="top-bar">
+        <button id="home-btn" onclick="showSection('home-screen')">Home</button>
+        <label class="icon-toggle">
+            <input type="checkbox" id="theme-toggle" onchange="toggleTheme()">
+            <span class="icon-slider">
+              <span class="icon">🌞</span>
+              <span class="icon">🌙</span>
+              <span class="thumb"></span>
+            </span>
+          </label>           
+            
+    </div>
+
+    <section id="home-screen" style="display: none; opacity: 0;">
+        <h1>Voice Command Dashboard</h1>
+        <div id="home-buttons">
+            <div class="symbol-button-container">
+                <div class="symbol">🎤</div>
+                <button class="symbol-button" onclick="showSection('speech-to-text-section')">Speech to Text</button>
+            </div>
+            <div class="symbol-button-container">
+                <div class="symbol">🗣️</div>
+                <button class="symbol-button" onclick="showSection('text-to-speech-section')">Text to Speech</button>
+            </div>
+            <div class="symbol-button-container">
+                <div class="symbol">🤖</div>
+                <a href="/assistant" class="assistant-link symbol-button">Assistant</a>
+            </div>
+        </div>
+    </section>
+
+
+    <section id="speech-to-text-section" style="display: none;">
+        <h2 style="color: #2c3e50;">Speech to Text</h2>
+        <div class="stt-controls">
+            <select id="language-select" class="dropdown">
+              <option value="en-US">English (US)</option>
+              <option value="hi-IN">Hindi (India)</option>
+              <option value="te-IN">Telugu (India)</option>
+            </select>
+            <button onclick="startRecognition()" class="btn start">🎤 Start</button>
+            <button onclick="stopRecognition()" class="btn stop">🛑 Stop</button>
+            <button onclick="saveText()" class="btn save">💾 Save</button>
+            <button onclick="deleteText()" class="btn clear">🧹 Clear</button>
+            <button onclick="downloadText()" class="btn download">⬇️ Download</button>
+        </div>
+
+        <div id="output" class="stt-output" contenteditable="true" spellcheck="false"></div>
+
+        <button onclick="toggleHistory()" class="btn history-toggle">📜 Toggle History</button>
+        <div id="saved-history" class="stt-history">
+            <ul id="history-list"></ul>
+        </div>
+    </section>
+        
+
+    <section id="text-to-speech-section" style="display: none;">
+        <h2 class="tts-heading">Text to Speech</h2>
+      
+        <div class="tts-lang-select">
+          <label for="tts-language-select">Select Language</label>
+          <select id="tts-language-select" class="dropdown">
+            <option value="en-US">English (US)</option>
+            <option value="hi-IN">Hindi (India)</option>
+            <option value="te-IN">Telugu (India)</option>
+          </select>
+        </div>
+
+        <div class="tts-container">
+            <div class="tts-input-group">
+              <label for="text-input">Type something</label>
+              <textarea id="text-input"></textarea>
+              <button id="speak-button">Speak</button>
+            </div>
+            <div class="tts-file-group">
+              <label for="file-upload">Upload File</label>
+              <input type="file" id="file-upload" />
+              <div class="file-preview" id="file-preview"></div>
+              <button id="speak-file">Speak File</button>
+            </div>
+          </div>
+          
+      
+        <div class="tts-controls">
+          <button onclick="pauseSpeech()">⏸️ Pause</button>
+          <button onclick="resumeSpeech()">▶️ Resume</button>
+          <button onclick="stopSpeech()">⏹️ Stop</button>
+        </div>
+    </section>
+        
+
+    <div id="save-notification">💾 Text saved!</div>
+
+    <script src="/main/script.js"></script>
+     
+</body>
+</html>
